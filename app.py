@@ -12,7 +12,7 @@ VECTORIZER_PATH = Path("scamshield_vectorizer.pkl")
 def load_artifacts():
     if not MODEL_PATH.exists() or not VECTORIZER_PATH.exists():
         return None, None
-    # Only load pickle files created by your own trusted Colab notebook.
+   
     model = joblib.load(MODEL_PATH)
     vectorizer = joblib.load(VECTORIZER_PATH)
     return model, vectorizer
@@ -57,7 +57,7 @@ if st.button("Scan message", type="primary", use_container_width=True):
             risk = "Low"
         st.write(f"**Risk band:** {risk}")
 
-        # Show strongest positive TF-IDF × logistic-regression coefficient contributions.
+    
         try:
             names = vectorizer.get_feature_names_out()
             coefficients = model.coef_[0]
